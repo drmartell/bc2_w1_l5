@@ -1,6 +1,9 @@
-const GET_POKEDEX_URL = 'https://alchemy-pokedex.herokuapp.com/api/pokedex';
+
+const POKEDEX_API_URL = 'https://alchemy-pokedex.herokuapp.com/api/pokedex/';
 
 export const getPokemons = async() => {
-    const response = await fetch(GET_POKEDEX_URL);
+    let queryString = window.location.hash.slice(1);
+    const url = `${POKEDEX_API_URL}${queryString}`;
+    const response = await fetch(url);
     return await response.json();
 };

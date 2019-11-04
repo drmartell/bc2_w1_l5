@@ -2,10 +2,10 @@ import { Component } from '../Component.js';
 
 export class PokemonItem extends Component {
     renderHTML() {
-        const { pokemon, url_image, shape } = this.props.pokemon;
+        const { pokemon, color_1, url_image, shape } = this.props.pokemon;
 
         return /*html*/`
-            <li class="pokemon-item">
+            <li class="pokemon-item" style="background-color: ${color_1}">
                 <h2>
                     <img 
                         src="${url_image}"
