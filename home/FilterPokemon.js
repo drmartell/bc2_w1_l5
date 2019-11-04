@@ -1,6 +1,6 @@
 import { Component } from '../Component.js';
 
-export class FilterImages extends Component {
+export class FilterPokemon extends Component {
 
     onRender(select) {
         const onFilter = this.props.onFilter;

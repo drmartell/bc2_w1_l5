@@ -1,5 +1,6 @@
 import { Component } from '../Component.js';
 
+// THIS FILE WILL CONTAIN SEARCHOPTIONS
 export class Options extends Component {
     
     renderHTML() {

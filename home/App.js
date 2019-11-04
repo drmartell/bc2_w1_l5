@@ -4,7 +4,7 @@ import { Options } from './Options.js';
 //import { List } from './List.js';
 import { Footer } from './Footer.js';
 import { PokemonList } from './PokemonList.js';
-// import { FilterImages } from './FilterImages.js';
+// import { FilterPokemon } from './FilterImages.js';
 // import { pokemons } from '../data/pokemons.js';
 // import { AddImage } from './AddImage.js';
 import { getPokemons } from '../services/pokedex-api.js';
