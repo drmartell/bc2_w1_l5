@@ -15,18 +15,22 @@ export class Options extends Component {
 
     onRender(form) {
         const searchInput = form.querySelector('input[name=search]');
-        const typeRadios = form.querySelectorAll('input[name=type]');
+        //const typeRadios = form.querySelectorAll('input[name=type]');
+        const typeSelects = form.querySelectorAll('option');
 
         function updateControls() {
             const queryString = window.location.hash.slice(1);
             const searchParams = new URLSearchParams(queryString);
 
-            searchInput.value = searchParams.get('s') || '';
+            searchInput.value = searchParams.get('pokemon') || '';
 
             const type = searchParams.get('type');
             if (type) {
-                typeRadios.forEach(typeRadio => {
-                    typeRadio.checked = typeRadio.value === type;
+                // typeRadios.forEach(typeRadio => {
+                //     typeRadio.checked = typeRadio.value === type;
+                // });
+                typeSelects.forEach(optionTag => {
+                    optionTag.selected = optionTag.value === type ? 'selected' : '';
                 });
             }
         } updateControls();
@@ -51,8 +55,12 @@ export class Options extends Component {
             const searchParams = new URLSearchParams(queryString);
 
             const theType = formData.get('type');
-            if (theType !== 'limit-to-type') searchParams.set('type', theType);
-            searchParams.set('pokemon', formData.get('search'));
+            if (theType !== '') searchParams.set('type', theType);
+            else searchParams.delete('type');
+            //searchParams.set('type', formData.get('type') || '');
+            const theSearch = formData.get('search');
+            if (theSearch !== '') searchParams.set('pokemon', theSearch);
+            else searchParams.delete('pokemon');
             searchParams.set('page', 1);
 
             window.location.hash = searchParams.toString();
@@ -84,7 +92,7 @@ export class Options extends Component {
                 </fieldset> -->
 
                 <select class="type" name="type">
-                    <option value="limit-to-type">Limit To Type</option>                
+                    <option value="">Limit To Type</option>                
                     <option value="bug">Bug</option>
                     <option value="dark">Dark</option>
                     <option value="dragon">Dragon</option>
