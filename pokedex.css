@@ -1,0 +1,123 @@
+body {
+    min-width: 350px;;
+}
+
+.options-section {
+    background: #3a3a3a;
+    padding: 30px 10px;
+    grid-area: options;
+    color: whitesmoke;
+}
+
+.list-section {
+    padding: 20px 10px;
+    grid-area: list;
+}
+
+@media (min-width: 900px) {
+    main {
+        display: grid;
+        grid-template-areas: 'options list list list list list list';
+    }
+    .options-section {
+        max-width: 270px;
+    }
+} 
+
+.search input {
+    height: 25px;
+}
+
+.paging {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.paging button {
+    position: relative;
+    height: 38px;
+    width: 50px;
+    font-size: 2em;
+    background-color: rgb(255, 255, 255);
+}
+
+.paging button:disabled {
+    background-color: rgb(153, 153, 153);
+    color: oldlace;
+}
+
+.paging img {
+    width: 35px;
+}
+
+.paging span {
+    margin: 0 10px;
+}
+
+.pokemon {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+    grid-gap: 5px;
+}
+
+.pokemon-item {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid #aaa;
+    border-radius: 15px;
+    background-color: white;
+    padding: 10px;
+    margin: 3px;
+
+    /* IE */
+    filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+
+    /* Chrome, Safari */
+    -webkit-filter: grayscale(1);
+
+    /* Firefox */
+    filter: grayscale(1);
+}
+
+.pokemon-item:hover {
+    filter: none;
+    -webkit-filter: grayscale(0%);
+}
+
+.pokemon-item h2 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.5em;
+}
+
+.pokemon-item div {
+    margin-top: 10px;   
+    padding: 3px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.pokemon-item h2 span {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.pokemon-item img {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    max-width: 50%;
+    margin: auto;
+}
