@@ -73,21 +73,12 @@ body {
     background-color: white;
     padding: 10px;
     margin: 3px;
-
-    /* IE */
-    filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
-
-    /* Chrome, Safari */
-    -webkit-filter: grayscale(1);
-
-    /* Firefox */
-    filter: grayscale(1);
 }
 
-.pokemon-item:hover {
+/* .pokemon-item:hover {
     filter: none;
     -webkit-filter: grayscale(0%);
-}
+} */
 
 .pokemon-item h2 {
     display: flex;
@@ -120,4 +111,18 @@ body {
     align-items: center;
     max-width: 50%;
     margin: auto;
+
+    /* IE */
+    filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+
+    /* Chrome, Safari */
+    -webkit-filter: grayscale(1);
+
+    /* Firefox */
+    filter: grayscale(1);
+}
+
+.pokemon-item img:hover {
+    filter: none;
+    -webkit-filter: grayscale(0%);
 }

@@ -32,11 +32,11 @@ export class Paging extends Component {
 
     renderHTML() {
         const perPage = 20; // WOULD BE NICE TO ALLOW USER TO SELECT
-        const totalResults = this.props.totalResults;
+        const count = this.props.count;
         let page = this.getPage();
-        const lastPage = Math.ceil(totalResults / perPage);
+        const lastPage = Math.ceil(count / perPage);
 
-        if (!totalResults) { // UNSURE IF THIS IS THE CORRECT IMPLEMENTATION FOR THIS API
+        if (!count) { // UNSURE IF THIS IS THE CORRECT IMPLEMENTATION FOR THIS API
             return /*html*/`
                 <p class="paging">No results, try another search</p>
             `;

@@ -2,7 +2,13 @@ import { Component } from '../Component.js';
 
 export class PokemonItem extends Component {
     renderHTML() {
-        const { pokemon, color_1, url_image, shape } = this.props.pokemon;
+        const {
+            pokemon,
+            type_1,
+            type_2,
+            color_1,
+            url_image,
+        } = this.props.pokemon;
 
         return /*html*/`
             <li class="pokemon-item" style="background-color: ${color_1}">
@@ -13,8 +19,8 @@ export class PokemonItem extends Component {
                     >
                 </h2>
                 <div class="name">${pokemon}</div>
-                <div class="section-ul-li_category-div">
-                    Shape: ${shape}
+                <div class="section-ul-li_type-div">
+                    Types: ${type_1}${type_2 !== 'NA' ? ', ' + type_2 : ''}
                 </div>
             </li>
         `;

@@ -22,15 +22,7 @@ export class App extends Component {
         const optionsSection = dom.querySelector('.options-section');
         optionsSection.prepend(optionsDOM);
 
-
-        // const list = new List();
-        // const listDOM = list.renderDOM();
-        // const listSection = dom.querySelector('.list-section');
-        // listSection.prepend(listDOM);
-
-        const props = { pokemons : [] };
-
-        const pokemonList = new PokemonList(props);
+        const pokemonList = new PokemonList({ pokemons: [] });
         const pokemonListDOM = pokemonList.renderDOM();
         const paging = new Paging();
         const pagingDOM = paging.renderDOM();
@@ -42,9 +34,15 @@ export class App extends Component {
         const footerDOM = footer.renderDOM();
         dom.appendChild(footerDOM);
 
-        const response = await getPokemons();
-        const pokemons = response.results;
-        pokemonList.update({ pokemons });
+        async function loadPokemons() {
+            const response = await getPokemons();
+            const pokemons = response.results;
+            const count = response.count;
+            pokemonList.update({ pokemons });
+            paging.update({ count });
+        } loadPokemons();
+
+        window.addEventListener('hashchange', () => loadPokemons());
     }
 
     renderHTML() {
