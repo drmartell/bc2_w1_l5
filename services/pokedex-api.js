@@ -7,9 +7,3 @@ export const getPokemons = async() => {
     const response = await fetch(url);
     return await response.json();
 };
-
-export const getTypes = async() => {
-    const url = `${POKEDEX_API_URL}/types`;
-    const response = await fetch(url);
-    return await response.json();
-};

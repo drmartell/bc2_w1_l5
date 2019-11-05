@@ -9,6 +9,10 @@ body {
     color: whitesmoke;
 }
 
+select {
+    width: 145px;
+}
+
 .list-section {
     padding: 20px 10px;
     grid-area: list;

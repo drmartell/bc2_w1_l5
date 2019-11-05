@@ -1,22 +1,15 @@
 import { Component } from '../Component.js';
-import { getTypes } from '../services/pokedex-api.js';
 
 // THIS FILE WILL CONTAIN SEARCHOPTIONS
 export class Options extends Component {
-
-    async getTypesList() {
-        const typesListArr = [];
-        const response = await getTypes();
-        response.forEach(typeObj => {
-            typesListArr.push(typeObj.type);
-        });
-        return typesListArr;
-    }
 
     onRender(form) {
         const searchInput = form.querySelector('input[name=search]');
         //const typeRadios = form.querySelectorAll('input[name=type]');
         const typeSelects = form.querySelectorAll('option');
+        const abilitySelects = form.querySelectorAll('ability');
+        const shapeSelects = form.querySelectorAll('shape');
+        const eggSelects = form.querySelectorAll('egg');
 
         function updateControls() {
             const queryString = window.location.hash.slice(1);
@@ -31,6 +24,27 @@ export class Options extends Component {
                 // });
                 typeSelects.forEach(optionTag => {
                     optionTag.selected = optionTag.value === type ? 'selected' : '';
+                });
+            }
+
+            const ability = searchParams.get('ability');
+            if (ability) {
+                abilitySelects.forEach(optionTag => {
+                    optionTag.selected = optionTag.value === ability ? 'selected' : '';
+                });
+            }
+
+            const shape = searchParams.get('shape');
+            if (shape) {
+                shapeSelects.forEach(optionTag => {
+                    optionTag.selected = optionTag.value === shape ? 'selected' : '';
+                });
+            }
+
+            const egg = searchParams.get('egg');
+            if (egg) {
+                eggSelects.forEach(optionTag => {
+                    optionTag.selected = optionTag.value === egg ? 'selected' : '';
                 });
             }
         } updateControls();
@@ -54,14 +68,26 @@ export class Options extends Component {
             const queryString = window.location.hash.slice(1);
             const searchParams = new URLSearchParams(queryString);
 
-            const theType = formData.get('type');
-            if (theType !== '') searchParams.set('type', theType);
-            else searchParams.delete('type');
-            //searchParams.set('type', formData.get('type') || '');
             const theSearch = formData.get('search');
             if (theSearch !== '') searchParams.set('pokemon', theSearch);
             else searchParams.delete('pokemon');
             searchParams.set('page', 1);
+
+            const theType = formData.get('type');
+            if (theType !== '') searchParams.set('type', theType);
+            else searchParams.delete('type');
+
+            const theAbility = formData.get('ability');
+            if (theAbility !== '') searchParams.set('ability', theAbility);
+            else searchParams.delete('ability');
+
+            const theShape = formData.get('shape');
+            if (theShape !== '') searchParams.set('shape', theShape);
+            else searchParams.delete('shape');
+
+            const theEgg = formData.get('egg');
+            if (theEgg !== '') searchParams.set('egg', theEgg);
+            else searchParams.delete('egg');
 
             window.location.hash = searchParams.toString();
         });
@@ -76,23 +102,19 @@ export class Options extends Component {
                 <p>
                     <input id="search" name="search">
                 </p>
-                <!-- <fieldset class="type">
+                <fieldset class="sort">
                     <label>
-                        <input type="radio" name="type" value="normal">
-                        Normal
+                        <input type="radio" name="order" value="asc">
+                        ↑
                     </label>
                     <label>
-                        <input type="radio" name="type" value="fight">
-                        Fight
+                        <input type="radio" name="order" value="desc">
+                        ↓
                     </label>
-                    <label>
-                        <input type="radio" name="type" value="flying">
-                        Flying
-                    </label>
-                </fieldset> -->
+                </fieldset>
                 <p>
                 <select class="type" name="type">
-                    <option value="">Limit By Type</option>                
+                    <option value="">Filter By Type</option>                
                     <option value="bug">Bug</option>
                     <option value="dark">Dark</option>
                     <option value="dragon">Dragon</option>
@@ -115,7 +137,7 @@ export class Options extends Component {
                 </p>
                 <p>
                 <select class="ability" name="ability">
-                    <option value="">Limit By Ability</option>
+                    <option value="">Filter By Ability</option>
                     <option value="adaptability">Adaptability</option>
                     <option value="aerilate">Aerilate</option>
                     <option value="aftermath">Aftermath</option>
@@ -309,7 +331,7 @@ export class Options extends Component {
                 </p>
                 <p>
                 <select class="shape" name="shape">
-                    <option value="">Limit By Shape</option>
+                    <option value="">Filter By Shape</option>
                     <option value="armor">Armor</option>
                     <option value="arms">Arms</option>
                     <option value="ball">Ball</option>
@@ -328,7 +350,7 @@ export class Options extends Component {
                 </p>
                 <p>
                 <select class="egg" name="egg">
-                    <option value="">Limit By Egg Group</option>
+                    <option value="">Filter By Egg Group</option>
                     <option value="bug">Bug</option>
                     <option value="ditto">Ditto</option>
                     <option value="dragon">Dragon</option>
