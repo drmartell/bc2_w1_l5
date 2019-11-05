@@ -58,7 +58,7 @@ body {
 
 .pokemon {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(165px, 300px));
     grid-gap: 5px;
 }
 
@@ -109,7 +109,7 @@ body {
     justify-content: flex-start;
     align-content: center;
     align-items: center;
-    max-width: 50%;
+    max-width: 80%;
     margin: auto;
 
     /* IE */
