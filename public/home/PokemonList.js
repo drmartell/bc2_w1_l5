@@ -1,4 +1,4 @@
-import { Component } from '../../Component.js';
+import { Component } from '../Component.js';
 import { PokemonItem } from './PokemonItem.js';
 
 export class PokemonList extends Component {

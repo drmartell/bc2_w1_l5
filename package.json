@@ -1,0 +1,29 @@
+{
+  "name": "bc2_w1_l5",
+  "version": "1.0.0",
+  "description": "Pokédex powered by API",
+  "main": "Component.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drmartell/bc2_w1_l5.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drmartell/bc2_w1_l5/issues"
+  },
+  "homepage": "https://github.com/drmartell/bc2_w1_l5#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
